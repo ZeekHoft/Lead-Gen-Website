@@ -18,7 +18,7 @@ import { useEffect, useState } from "react"
 export function ModeToggle() {
     const { setTheme } = useTheme()
     const [mounted, setMounted] = useState(false)
-    // adding the useEffect to avoid hydration error
+    // adding the useEffect to avoid hydration error, when server and client side don't show the same UI
     // This ensures the component only renders its "real" UI 
     // after it has reached the browser
     useEffect(() => {
