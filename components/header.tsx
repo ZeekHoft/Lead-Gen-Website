@@ -4,11 +4,12 @@ import { Logo } from '@/components/logo'
 import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import React from 'react'
+import { ModeToggle } from './model-toggle'
 
 const menuItems = [
     { name: 'Services', href: '#Features' },
-    { name: 'About', href: '#link' },
-    { name: 'Contact', href: '#link' },
+    // { name: 'About', href: '#link' },
+    { name: 'Contact', href: '#Contact' },
     // { name: 'Pricing', href: '#link' },
 ]
 
@@ -67,6 +68,7 @@ export const HeroHeader = () => {
                                 </ul>
                             </div>
                             <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
+                                <ModeToggle />
                                 {/* <Button
                                     asChild
                                     variant="outline"
