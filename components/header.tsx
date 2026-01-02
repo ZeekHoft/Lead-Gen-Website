@@ -7,8 +7,8 @@ import React from 'react'
 
 const menuItems = [
     { name: 'Services', href: '#Features' },
-    { name: 'About', href: '#link' },
-    { name: 'Contact', href: '#link' },
+    // { name: 'About', href: '#link' },
+    { name: 'Contact', href: '#Contact' },
     // { name: 'Pricing', href: '#link' },
 ]
 
