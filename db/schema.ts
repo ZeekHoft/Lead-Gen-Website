@@ -1,4 +1,4 @@
-import { pgEnum, pgTable, text, uuid } from 'drizzle-orm/pg-core';
+import { pgEnum, pgTable, text, uuid, timestamp } from 'drizzle-orm/pg-core';
 
 
 export const JobType = pgEnum("Job_type", [
@@ -14,5 +14,10 @@ export const clients = pgTable('clients', {
     email: text('email').notNull().unique(),
     country: text('country').notNull(),
     compweb: text('website').notNull(),
-    job: JobType("job").notNull(),
+    job: JobType("job_type").notNull(),
+    createdAt: timestamp("created_at").defaultNow(),
+
 });
+
+export type Client = typeof clients.$inferSelect;
+
