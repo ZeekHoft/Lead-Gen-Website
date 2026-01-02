@@ -135,7 +135,7 @@ export default function ContactSection({ client }: ClientForm) {
                                 name="country"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Input Country</FormLabel>
+                                        <FormLabel>Country</FormLabel>
                                         <FormControl>
                                             <Input placeholder="Germany | Philippines | U.S.A" {...field} />
                                         </FormControl>
@@ -149,7 +149,7 @@ export default function ContactSection({ client }: ClientForm) {
                                 name="job"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Job Function</FormLabel>
+                                        <FormLabel>Job Title</FormLabel>
                                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                                             <FormControl>
                                                 <SelectTrigger>

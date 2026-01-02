@@ -7,10 +7,8 @@ import DisplayContact from "@/components/display-contact";
 export default function Home() {
   return (
     <>
-      <section>
-        <HeroSection />
+      <HeroSection />
 
-      </section>
       <section id="Features">
         <Features />
 
@@ -18,9 +16,7 @@ export default function Home() {
       <section id="Contact">
         <ContactSection />
       </section>
-      <section >
-        <DisplayContact />
-      </section>
+      <DisplayContact />
     </>
 
   );
