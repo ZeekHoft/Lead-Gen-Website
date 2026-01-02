@@ -1,66 +1,86 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { Settings2, Sparkles, Zap } from 'lucide-react'
+import { LucideIcon, Settings2, Sparkles, Zap } from 'lucide-react'
 import { ReactNode } from 'react'
+
+interface Contents {
+    title: string,
+    context: string,
+    icon: LucideIcon
+}
+
+
+function ServicesCard({ title, context, icon: Icon }: Contents) {
+    return (
+        <Card className="group shadow-zinc-950/5">
+            <CardHeader className="pb-3">
+                <CardDecorator>
+                    <Icon
+                        className="size-6"
+                        aria-hidden
+                    />
+                </CardDecorator>
+
+                <h3 className="mt-6 font-medium">{title}</h3>
+            </CardHeader>
+
+            <CardContent>
+                <p className="text-sm">{context}</p>
+            </CardContent>
+        </Card>
+    );
+}
+
+
 
 export default function Features() {
     return (
         <section className="bg-zinc-50 py-16 md:py-32 dark:bg-transparent">
-            <div className="@container mx-auto max-w-5xl px-6">
+            <div className="@container mx-auto max-w-7xl px-6">
                 <div className="text-center">
                     <h2 className="text-balance text-4xl font-semibold lg:text-5xl">Built to cover your needs</h2>
                     <p className="mt-4">Libero sapiente aliquam quibusdam aspernatur, praesentium iusto repellendus.</p>
                 </div>
                 <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-8 grid max-w-sm gap-6 *:text-center md:mt-16">
-                    <Card className="group shadow-zinc-950/5">
-                        <CardHeader className="pb-3">
-                            <CardDecorator>
-                                <Zap
-                                    className="size-6"
-                                    aria-hidden
-                                />
-                            </CardDecorator>
 
-                            <h3 className="mt-6 font-medium">Customizable</h3>
-                        </CardHeader>
+                    <ServicesCard
+                        icon={Zap}
+                        title='Lead Generation'
+                        context='Multi-Channel Outreach. A mix of email, calls, and social
+                            platforms that converts. We provide targeted strategies
+                            to attract qualified leads, fill your sales pipeline, and drive
+                            consistent business growth.
+                            ' />
 
-                        <CardContent>
-                            <p className="text-sm">Extensive customization options, allowing you to tailor every aspect to meet your specific needs.</p>
-                        </CardContent>
-                    </Card>
+                    <ServicesCard
+                        icon={Zap}
+                        title='Social Media Management'
+                        context='Providing full-service management of your social
+                        platforms—creating content, scheduling posts, and
+                        engaging with your audience' />
 
-                    <Card className="group shadow-zinc-950/5">
-                        <CardHeader className="pb-3">
-                            <CardDecorator>
-                                <Settings2
-                                    className="size-6"
-                                    aria-hidden
-                                />
-                            </CardDecorator>
 
-                            <h3 className="mt-6 font-medium">You have full control</h3>
-                        </CardHeader>
+                    <ServicesCard
+                        icon={Zap}
+                        title='Content Creation'
+                        context='Creating high-quality visual and written content that tells
+                        your brand story and supports marketing goals.' />
+                    <ServicesCard
+                        icon={Zap}
+                        title='Lead Profiling'
+                        context='We deliver lead lists customized to match your ideal customer profile.
+' />
+                    <ServicesCard
+                        icon={Zap}
+                        title='Executive Assistance'
+                        context='We provide reliable administrative support to help executives stay
+                focused, organized, and efficient.' />
+                    <ServicesCard
+                        icon={Zap}
+                        title='Customer Service Rep'
+                        context='We provide support that enhances client satisfaction, addresses their
+                    needs, and builds strong, long-term relationships.' />
 
-                        <CardContent>
-                            <p className="mt-3 text-sm">From design elements to functionality, you have complete control to create a unique and personalized experience.</p>
-                        </CardContent>
-                    </Card>
 
-                    <Card className="group shadow-zinc-950/5">
-                        <CardHeader className="pb-3">
-                            <CardDecorator>
-                                <Sparkles
-                                    className="size-6"
-                                    aria-hidden
-                                />
-                            </CardDecorator>
-
-                            <h3 className="mt-6 font-medium">Powered By AI</h3>
-                        </CardHeader>
-
-                        <CardContent>
-                            <p className="mt-3 text-sm">Elements to functionality, you have complete control to create a unique experience.</p>
-                        </CardContent>
-                    </Card>
                 </div>
             </div>
         </section>
