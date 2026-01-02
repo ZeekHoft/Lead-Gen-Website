@@ -4,12 +4,14 @@ import { z } from "zod"
 import { useForm } from 'react-hook-form'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Client, JobType } from '@/db/schema'
+import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Card } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
+
 
 import {
     Form,
@@ -22,6 +24,7 @@ import {
 } from "@/components/ui/form"
 import { CreateClient } from "@/server/clients"
 import { useState } from "react"
+import { toast } from "sonner"
 
 export const clientFormSchema = z.object({
     name: z.string().min(2, "Name too short").max(50),
@@ -38,7 +41,7 @@ interface ClientForm {
 
 export default function ContactSection({ client }: ClientForm) {
     const [isSubmitting, setIsSubmitting] = useState(false);
-
+    const router = useRouter();
     const form = useForm<z.infer<typeof clientFormSchema>>({
 
         resolver: zodResolver(clientFormSchema),
@@ -59,9 +62,10 @@ export default function ContactSection({ client }: ClientForm) {
                 const response = await CreateClient(values);
                 // Checks if what was returned an error code or not
                 if (response?.error) {
-                    alert(`Error: ${response.error}`);
+                    toast.error(`Error: ${response.error}`);
                 } else {
-                    alert("Form submitted successfully!");
+                    toast.success("We'll be in touch, thank you!")
+                    router.refresh();
                     form.reset();
                 }
             }
