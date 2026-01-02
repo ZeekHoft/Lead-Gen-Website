@@ -2,6 +2,7 @@
 
 import { db } from "@/db/drizzle";
 import { clients, Client } from "@/db/schema";
+import { eq } from "drizzle-orm";
 
 export async function GetClients() {
     try {
@@ -25,6 +26,15 @@ export async function CreateClient(client: Omit<Client, "id" | "createdAt">) {
     }
 }
 
+export async function DeleteClient(client: string) {
+    try {
+        await db.delete(clients).where(eq(clients.id, client));
+    } catch (error) {
+        console.log(error);
+        return { error: "Failed to delete client information contact IT for help" }
+    }
+
+}
 
 
 

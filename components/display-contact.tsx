@@ -1,6 +1,6 @@
 
 
-import { GetClients } from "@/server/clients"
+import { DeleteClient, GetClients } from "@/server/clients"
 import {
     Table,
     TableBody,
@@ -10,6 +10,8 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import DeleteButton from "./delete-button";
+
 async function DisplayContact() {
     const contact = await GetClients();
     return (
@@ -34,6 +36,11 @@ async function DisplayContact() {
                         <TableCell>{cntct.name}</TableCell>
                         <TableCell>{cntct.country}</TableCell>
                         <TableCell className="text-right">{cntct.job}</TableCell>
+                        <TableCell className="text-right">
+
+                            <DeleteButton clientId={cntct.id} />
+
+                        </TableCell>
                     </TableRow>
 
                 ))}
