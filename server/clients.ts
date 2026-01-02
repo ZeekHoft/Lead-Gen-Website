@@ -1,3 +1,5 @@
+"use server"
+
 import { db } from "@/db/drizzle";
 import { clients, Client } from "@/db/schema";
 
@@ -11,16 +13,16 @@ export async function GetClients() {
     }
 }
 
-export async function CreateClinet(client: Omit<Client, "id" | "created_at">) {
+export async function CreateClient(client: Omit<Client, "id" | "createdAt">) {
+    //returns a successs or an error code 
+
     try {
-        const newClient = await db.insert(clients).values(client);
-        return newClient;
+        const result = await db.insert(clients).values(client).returning();
+        return { success: true, data: result };
     } catch (error) {
-        console.log(error);
-        return { error: "Failed to create contact information" };
+        console.error("Database Error:", error);
+        return { success: false, error: "Failed to create contact information" };
     }
-
-
 }
 
 
