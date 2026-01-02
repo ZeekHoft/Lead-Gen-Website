@@ -3,6 +3,7 @@ import HeroSection from "@/components/hero-section";
 import Features from "@/components/features-1";
 import ContactSection from "@/components/contact";
 import DisplayContact from "@/components/display-contact";
+import FooterSection from "@/components/footer";
 
 export default function Home() {
   return (
@@ -16,7 +17,10 @@ export default function Home() {
       <section id="Contact">
         <ContactSection />
       </section>
-      <DisplayContact />
+      <section>
+        <FooterSection />
+
+      </section>
     </>
 
   );
