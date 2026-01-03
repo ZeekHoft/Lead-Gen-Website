@@ -11,12 +11,24 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useEffect, useState } from "react"
 
 
 
 export function ModeToggle() {
     const { setTheme } = useTheme()
+    const [mounted, setMounted] = useState(false)
+    // adding the useEffect to avoid hydration error, when server and client side don't show the same UI
+    // This ensures the component only renders its "real" UI 
+    // after it has reached the browser
+    useEffect(() => {
+        setMounted(true)
+    }, [])
 
+    if (!mounted) {
+        // Render a visual placeholder or null so IDs aren't created on the server
+        return <Button variant="outline" size="icon" disabled />
+    }
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -40,3 +52,7 @@ export function ModeToggle() {
         </DropdownMenu>
     )
 }
+function setMounted(arg0: boolean) {
+    throw new Error("Function not implemented.")
+}
+
