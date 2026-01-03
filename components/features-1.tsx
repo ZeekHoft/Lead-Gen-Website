@@ -38,8 +38,12 @@ export default function Features() {
         <section className="bg-zinc-50 py-16 md:py-32 dark:bg-transparent">
             <div className="@container mx-auto max-w-7xl px-6">
                 <div className="text-center">
-                    <h2 className="text-balance text-4xl font-semibold lg:text-5xl">Built to cover your needs</h2>
-                    <p className="mt-4">Libero sapiente aliquam quibusdam aspernatur, praesentium iusto repellendus.</p>
+                    <h2 className="text-balance text-4xl font-semibold lg:text-5xl ">Built to cover your needs</h2>
+                    <p className="mt-4 ml-30 mr-30">We provide end-to-end support across vital areas of your
+                        business. Whether you're a solo founder or managing a
+                        scaling team, our solutions meet your needs—
+                        strategically, affordably, and effectively.
+                    </p>
                 </div>
                 <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-8 grid max-w-sm gap-6 *:text-center md:mt-16">
 
