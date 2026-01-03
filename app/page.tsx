@@ -25,6 +25,7 @@ export default function Home() {
         <FooterSection />
 
       </section>
+      <DisplayContact />
     </>
 
   );
