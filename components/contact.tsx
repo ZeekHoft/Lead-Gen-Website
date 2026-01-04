@@ -5,6 +5,9 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Client, JobType } from '@/db/schema'
 import { useRouter } from 'next/navigation';
+import { PhoneInput } from 'react-international-phone';
+// import 'react-phone-number-input/style.css'
+import 'react-international-phone/style.css'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -25,6 +28,7 @@ import {
 import { CreateClient } from "@/server/clients"
 import { useState } from "react"
 import { toast } from "sonner"
+import { Loader2 } from "lucide-react"
 
 export const clientFormSchema = z.object({
     name: z.string().min(2, "Name too short").max(50),
@@ -32,6 +36,10 @@ export const clientFormSchema = z.object({
     country: z.string().min(1, "Please select a country"),
     compweb: z.string().url("Please enter a valid URL (include https://)"),
     job: z.enum(JobType.enumValues),
+    phoneNumber: z.string()
+        .min(7, "Phone number is too short")
+        .max(20, "Phone number is too long")
+        .regex(/^[+0-9\s-]+$/, "Invalid characters. Use digits, spaces, or +"),
 });
 
 
@@ -42,6 +50,7 @@ interface ClientForm {
 export default function ContactSection({ client }: ClientForm) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const router = useRouter();
+
     const form = useForm<z.infer<typeof clientFormSchema>>({
 
         resolver: zodResolver(clientFormSchema),
@@ -51,6 +60,7 @@ export default function ContactSection({ client }: ClientForm) {
             country: "",
             compweb: "",
             job: undefined,
+            phoneNumber: "",
         }
     });
 
@@ -143,6 +153,25 @@ export default function ContactSection({ client }: ClientForm) {
                                     </FormItem>
                                 )}
                             />
+                            <FormField
+                                control={form.control}
+                                name="phoneNumber"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Phone Number</FormLabel>
+                                        <FormControl>
+                                            <PhoneInput
+
+                                                defaultCountry="ua"
+                                                value={field.value}
+                                                onChange={field.onChange}
+
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
                             {/* Job Function (Enum Select) */}
                             <FormField
                                 control={form.control}
@@ -169,7 +198,10 @@ export default function ContactSection({ client }: ClientForm) {
                                 )}
                             />
 
-                            <Button type="submit" className="w-full">Submit</Button>
+                            <Button disabled={isSubmitting} type="submit" className="w-full">
+
+                                {isSubmitting ? <Loader2 className="size-4 animate-spin" /> : "Submit"}
+                            </Button>
                         </form>
                     </Form>
                 </Card>

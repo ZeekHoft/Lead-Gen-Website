@@ -36,6 +36,8 @@ async function DisplayContact() {
                         <TableCell>{cntct.name}</TableCell>
                         <TableCell>{cntct.country}</TableCell>
                         <TableCell className="text-right">{cntct.job}</TableCell>
+                        <TableCell className="text-right">{cntct.phoneNumber}</TableCell>
+
                         <TableCell className="text-right">
 
                             <DeleteButton clientId={cntct.id} />

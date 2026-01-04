@@ -16,6 +16,7 @@ export const clients = pgTable('clients', {
     compweb: text('website').notNull(),
     job: JobType("job_type").notNull(),
     createdAt: timestamp("created_at").defaultNow(),
+    phoneNumber: text("phone_number").notNull().default('')
 
 });
 

@@ -58,7 +58,7 @@ export default function DeleteButton({ clientId }: ClientForm) {
                     </DialogDescription>
                 </DialogHeader>
                 <Button disabled={isLoading} variant="destructive" onClick={handleDelete}>
-                    {isLoading ? <Loader2 className="size-4 animate-spin" /> : "Delete Blog"}
+                    {isLoading ? <Loader2 className="size-4 animate-spin" /> : "Delete Client Contact"}
 
 
                 </Button>
